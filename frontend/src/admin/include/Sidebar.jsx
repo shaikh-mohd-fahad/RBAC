@@ -1,47 +1,53 @@
-import React from 'react'
-import {Link} from "react-router-dom"
+import React from "react";
+import { Link } from "react-router-dom";
+import { MdDashboard, MdGroup, MdSecurity, MdLock } from "react-icons/md";
+
 function Sidebar() {
   return (
-    <>
-      <div className="drawer lg:drawer-open">
-              <input
-                id="my-drawer-2"
-                type="checkbox"
-                className="drawer-toggle"
-              />
-              <div className="drawer-content flex flex-col items-center justify-center">
-                <label
-                  htmlFor="my-drawer-2"
-                  className="btn btn-primary drawer-button lg:hidden"
-                >
-                  Sidebar
-                </label>
-              </div>
-              <div className="drawer-side">
-                <label
-                  htmlFor="my-drawer-2"
-                  aria-label="close sidebar"
-                  className="drawer-overlay"
-                ></label>
-                <ul className="menu bg-base-200 text-base-content  w-56 p-4"  style={{ height: "calc(100% - 60px)" }}>
-                  {/* Sidebar content here */}
-                  <li>
-                    <Link to="/admin/dashboard">Dashboard</Link>
-                  </li>
-                  <li>
-                    <Link to="/admin/allusers">All Users</Link>
-                  </li>
-                  <li>
-                    <Link to="/admin/role">Role</Link>
-                  </li>
-                  <li>
-                    <Link to="/admin/permission">Permissions</Link>
-                  </li>
-                </ul>
-              </div>
-            </div>
-    </>
-  )
+    <div className="drawer lg:drawer-open bg-gray-100">
+      <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
+      <div className="drawer-content flex flex-col items-center justify-center">
+        <label
+          htmlFor="my-drawer-2"
+          className="btn btn-outline drawer-button lg:hidden"
+        >
+          Open Sidebar
+        </label>
+      </div>
+      <div className="drawer-side">
+        <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
+        <ul
+          className="menu p-4 w-64 bg-gray-50 text-gray-800 border-r border-gray-200"
+          style={{ height: "100vh" }}
+        >
+          <li className="mb-2">
+            <Link to="/admin/dashboard" className="flex items-center gap-3">
+              <MdDashboard className="text-gray-500 text-lg" />
+              <span className="text-sm">Dashboard</span>
+            </Link>
+          </li>
+          <li className="mb-2">
+            <Link to="/admin/allusers" className="flex items-center gap-3">
+              <MdGroup className="text-gray-500 text-lg" />
+              <span className="text-sm">All Users</span>
+            </Link>
+          </li>
+          <li className="mb-2">
+            <Link to="/admin/role" className="flex items-center gap-3">
+              <MdSecurity className="text-gray-500 text-lg" />
+              <span className="text-sm">Roles</span>
+            </Link>
+          </li>
+          <li className="mb-2">
+            <Link to="/admin/permission" className="flex items-center gap-3">
+              <MdLock className="text-gray-500 text-lg" />
+              <span className="text-sm">Permissions</span>
+            </Link>
+          </li>
+        </ul>
+      </div>
+    </div>
+  );
 }
 
-export default Sidebar
+export default Sidebar;

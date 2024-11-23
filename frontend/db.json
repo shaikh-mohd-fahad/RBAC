@@ -1,0 +1,11 @@
+{
+    "users": [
+      { "id": 1, "name": "Alice", "email": "alice@example.com", "role": "Admin","status":"Active" },
+      { "id": 2, "name": "Bob", "email": "bob@example.com", "role": "User","status":"Disabled" }
+    ],
+    "posts": [
+      { "id": 1, "title": "Post One", "author": "Alice" },
+      { "id": 2, "title": "Post Two", "author": "Bob" }
+    ]
+  }
+  
