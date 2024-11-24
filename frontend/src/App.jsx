@@ -1,11 +1,15 @@
 import React from 'react'
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, ServerRouter } from 'react-router-dom';
 import Dashboard from './admin/Dashboard'
 import Home from './site/Home';
 import AllUsers from './admin/users/AllUsers';
 import Role from './admin/role/Role';
 import Permission from './admin/permission/Permission';
 import AddUsers from './admin/users/AddUsers';
+
+// start json Server
+// json-server --watch db.json --port 3000
+
 function App() {
   return (
     <>
