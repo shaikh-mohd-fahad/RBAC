@@ -4,6 +4,7 @@ import axios from "axios";
 import { FaEdit, FaEye } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 import { Link } from "react-router-dom";
+import toast from "react-hot-toast";
 
 function AllUsers() {
   const [users, setUsers] = useState([]);
@@ -16,6 +17,16 @@ function AllUsers() {
       console.log("Error fetching users:", error);
     }
   };
+  const handleDeleteUser=async (id)=>{
+    // console.log(id)
+    try {
+      const res=await axios.delete(`http://localhost:3000/users/${id}`)
+      getAllUsers()
+      toast.success("User Deleted")
+    } catch (error) {
+      console.log("error", error)
+    }
+  }
 
   useEffect(() => {
     getAllUsers();
@@ -24,8 +35,8 @@ function AllUsers() {
   return (
     <Layout>
       <div className="container mx-auto p-6">
-        <h1 className="text-4xl font-semibold text-center text-gray-800 mb-8">
-          All Users
+        <h1 className="text-3xl font-semibold text-center text-gray-800 mb-8">
+          All <span className="text-blue-700">USERS</span>
         </h1>
         <div className="flex justify-between items-center mb-6">
           <p className="text-gray-600">Manage all registered users here.</p>
@@ -92,21 +103,27 @@ function AllUsers() {
                         </td>
                         <td className="px-4 py-2 border-b text-center">
                           <div className="flex items-center justify-center gap-3">
+                            <Link to={`/admin/viewuser/${data.id}`}>
                             <button
                               title="View"
                               className="text-blue-500 hover:text-blue-600"
                             >
+                              
                               <FaEye className="text-lg" />
                             </button>
+                            </Link>
+                            <Link to={`/admin/edituser/${data.id}`}>
                             <button
                               title="Edit"
                               className="text-green-500 hover:text-green-600"
                             >
                               <FaEdit className="text-lg" />
                             </button>
+                            </Link>
                             <button
                               title="Delete"
                               className="text-red-500 hover:text-red-600"
+                              onClick={()=>{handleDeleteUser(data.id)}}
                             >
                               <MdDelete className="text-lg" />
                             </button>

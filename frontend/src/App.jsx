@@ -6,6 +6,8 @@ import AllUsers from './admin/users/AllUsers';
 import Role from './admin/role/Role';
 import Permission from './admin/permission/Permission';
 import AddUsers from './admin/users/AddUsers';
+import EditUser from './admin/users/EditUser';
+import ViewUser from './admin/users/ViewUser';
 
 // start json Server
 // json-server --watch db.json --port 3000
@@ -22,6 +24,8 @@ function App() {
 
         <Route path="admin/allusers" element={<AllUsers/>}/>
         <Route path="admin/adduser" element={<AddUsers/>}/>
+        <Route path="admin/edituser/:id" element={<EditUser/>}/>
+        <Route path="admin/viewuser/:id" element={<ViewUser/>}/>
 
         <Route path="admin/role" element={<Role/>}/>
         <Route path="admin/permission" element={<Permission/>}/>

@@ -1,42 +1,42 @@
 {
   "users": [
     {
-      "id": 1,
-      "name": "Alice",
-      "email": "alice@example.com",
-      "role": "Admin",
+      "id": "6f65",
+      "name": "index.php",
+      "email": "test@gmail.com",
+      "role": "admin",
       "status": "Active"
     },
     {
-      "id": 2,
-      "name": "Bob",
-      "email": "bob@example.com",
-      "role": "User",
-      "status": "Disabled"
-    },
-    {
-      "id": "0d6f",
-      "name": "abc",
+      "id": "93b1",
+      "name": "inr",
       "email": "fahad@gmail.com",
       "role": "admin",
       "status": "Active"
     },
     {
-      "id": "49d7",
-      "name": "abc",
-      "email": "abc@gmail.com",
-      "role": "editor",
-      "status": "disabled"
+      "id": "741a",
+      "name": "inr",
+      "email": "fahad@gmail.com",
+      "role": "admin",
+      "status": "Active"
+    },
+    {
+      "id": "6904",
+      "name": "inr",
+      "email": "fahadazmilko@gmail.com",
+      "role": "admin",
+      "status": "Active"
     }
   ],
   "posts": [
     {
-      "id": 1,
+      "id": "1",
       "title": "Post One",
       "author": "Alice"
     },
     {
-      "id": 2,
+      "id": "2",
       "title": "Post Two",
       "author": "Bob"
     }

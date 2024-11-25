@@ -1,7 +1,10 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Layout from '../layout/Layout'
 import axios from 'axios';
+import toast from 'react-hot-toast';
 function AddUsers() {
+ 
+  
   const [input,setInput]=useState({
     name:'',
     email:'',
@@ -15,6 +18,9 @@ function AddUsers() {
       [name]:value
   })
   }
+  // useEffect(()=>{
+  //   toast.success('Successfully toasted!')
+  // },[])
   const handleFormSubmit=async(e)=>{
     e.preventDefault();
     console.log(input);
@@ -28,6 +34,7 @@ function AddUsers() {
           // status:input.status,
          },
         { headers: { "Content-Type": "application/json" } })
+        toast.success('New User Added')
       console.log("res",res)
     } catch (error) {
       console.log("error", error)
@@ -35,15 +42,15 @@ function AddUsers() {
   }
   return (
     <Layout>
+       
       <div className="container mx-auto p-6">
-        <h1 className="text-4xl font-semibold text-center text-gray-800 mb-8">
-          Add New Users
+      <h1 className="text-3xl font-semibold text-center text-gray-800 mb-8">
+          Add <span className="text-blue-700">NEW USER</span>
         </h1>
         <div className='flex flex-row'>
         <div className='basis-1/4'></div>
         <div className='basis-1/2'>
         <div className="max-w-md mx-auto p-6 bg-white shadow-md rounded-lg">
-  <h1 className="text-2xl font-bold text-gray-700 mb-4 text-center">User Form</h1>
   <form onSubmit={handleFormSubmit} method="post">
     <div className="mb-4">
       <label htmlFor="name" className="block text-gray-600 mb-1">Name</label>
