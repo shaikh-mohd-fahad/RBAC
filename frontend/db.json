@@ -1,31 +1,31 @@
 {
   "users": [
     {
-      "id": "6f65",
-      "name": "index.php",
-      "email": "test@gmail.com",
-      "role": "admin",
-      "status": "Active"
-    },
-    {
       "id": "93b1",
-      "name": "inr",
-      "email": "fahad@gmail.com",
-      "role": "admin",
-      "status": "Active"
-    },
-    {
-      "id": "741a",
-      "name": "inr",
-      "email": "fahad@gmail.com",
-      "role": "admin",
-      "status": "Active"
+      "name": "abc",
+      "email": "a@gbcmail.com",
+      "role": "viewer",
+      "status": "Disabled"
     },
     {
       "id": "6904",
       "name": "inr",
       "email": "fahadazmilko@gmail.com",
       "role": "admin",
+      "status": "Active"
+    },
+    {
+      "id": "3c10",
+      "name": "mohd fahad",
+      "email": "fahadazmi@gmail.com",
+      "role": "viewer",
+      "status": "Active"
+    },
+    {
+      "id": "5e70",
+      "name": "afack ahmad",
+      "email": "afackahmad@gmail.com",
+      "role": "viewer",
       "status": "Active"
     }
   ],

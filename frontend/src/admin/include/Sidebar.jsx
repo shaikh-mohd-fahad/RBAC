@@ -14,11 +14,11 @@ function Sidebar() {
           Open Sidebar
         </label>
       </div>
-      <div className="drawer-side">
+      <div className="drawer-side" style={{ height: "calc(100vh - 60px)" }}>
         <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
         <ul
           className="menu p-4 w-64 bg-gray-50 text-gray-800 border-r border-gray-200"
-          style={{ height: "100vh" }}
+          style={{ height: "calc(100vh - 60px)" }}
         >
           <li className="mb-2">
             <Link to="/admin/dashboard" className="flex items-center gap-3">

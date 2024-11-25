@@ -3,8 +3,6 @@ import Layout from '../layout/Layout'
 import axios from 'axios';
 import toast from 'react-hot-toast';
 function AddUsers() {
- 
-  
   const [input,setInput]=useState({
     name:'',
     email:'',
@@ -23,8 +21,7 @@ function AddUsers() {
   // },[])
   const handleFormSubmit=async(e)=>{
     e.preventDefault();
-    console.log(input);
-
+    // console.log(input);
     try {
       const res=await axios.post('http://localhost:3000/users',
         { ...input
@@ -35,7 +32,13 @@ function AddUsers() {
          },
         { headers: { "Content-Type": "application/json" } })
         toast.success('New User Added')
-      console.log("res",res)
+        setInput({
+          name:'',
+          email:'',
+          role:'',
+          status:'Active'
+        })
+      // console.log("res",res)
     } catch (error) {
       console.log("error", error)
     }
@@ -108,8 +111,8 @@ function AddUsers() {
     required
     className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
   >
-    <option value="active">Active</option>
-    <option value="disabled">Disabled</option>
+    <option value="Active">Active</option>
+    <option value="Disabled">Disabled</option>
   </select>
 </div>
 
