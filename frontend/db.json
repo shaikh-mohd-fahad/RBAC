@@ -23,10 +23,10 @@
     },
     {
       "id": "5e70",
-      "name": "afack ahmad",
-      "email": "afackahmad@gmail.com",
-      "role": "viewer",
-      "status": "Active"
+      "name": "afack madah",
+      "email": "afack@gmail.com",
+      "role": "editor",
+      "status": "Disabled"
     }
   ],
   "roles": [
@@ -59,22 +59,35 @@
       ],
       "status": "Active",
       "id": "053a"
+    },
+    {
+      "role": "test",
+      "permissions": [
+        "Create",
+        "Update"
+      ],
+      "status": "Active",
+      "id": "286e"
     }
   ],
-  "permission":[
+  "permission": [
     {
+      "id": "1",
       "permission": "Create",
       "description": "Allows the user to create new records or data."
     },
     {
+      "id": "2",
       "permission": "Read",
       "description": "Grants access to view existing records or data."
     },
     {
+      "id": "3",
       "permission": "Update",
       "description": "Enables the user to modify or edit existing records or data."
     },
     {
+      "id": "4",
       "permission": "Delete",
       "description": "Allows the user to remove or delete existing records or data."
     }
@@ -85,5 +98,4 @@
     "adminUsers": 50,
     "totalRoles": 10
   }
-  
 }

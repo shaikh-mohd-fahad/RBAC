@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Layout from "../layout/Layout";
 import axios from "axios";
-import { FaEdit, FaEye } from "react-icons/fa";
-import { MdDelete } from "react-icons/md";
 import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
 

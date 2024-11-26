@@ -10,7 +10,19 @@ function AddUsers() {
     role: '',
     status: 'Active'
   });
-
+  const [allRole,setAllRole]=useState([]);
+  const getAllRole=async()=>{
+    try {
+      const res=await axios.get("http://localhost:3000/roles");
+      // console.log("res",res.data)
+      setAllRole(res.data)
+    } catch (error) {
+      console.log("error",error)
+    }
+  }
+  useEffect(()=>{
+    getAllRole()
+  },[])
   const [errors, setErrors] = useState({}); 
 
   const handleInput = (e) => {
@@ -102,7 +114,7 @@ function AddUsers() {
 
                 <div className="mb-4">
                   <label htmlFor="role" className="block text-gray-600 mb-1">
-                    Role
+                    Role {console.log("role ke paas",allRole)}
                   </label>
                   <select
                     id="role"
@@ -115,9 +127,11 @@ function AddUsers() {
                     <option value="" disabled>
                       Select a role
                     </option>
-                    <option value="admin">Admin</option>
-                    <option value="editor">Editor</option>
-                    <option value="viewer">Viewer</option>
+                    {
+                      allRole.length>0 && allRole.map((data)=>(
+                   ( <option value={data.role} className='' key={data.id}>{data.role.charAt(0).toUpperCase() + data.role.slice(1).toLowerCase()}</option>)
+                      ))
+                    }
                   </select>
                   {errors.role && <p className="text-red-500 text-sm">{errors.role}</p>}
                 </div>

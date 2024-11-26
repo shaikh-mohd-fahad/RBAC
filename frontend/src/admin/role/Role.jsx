@@ -19,7 +19,7 @@ function Role() {
     }
   };
   const handleDeleteRole=async (id)=>{
-    console.log(id)
+    // console.log(id)
     try {
       const res=await axios.delete(`http://localhost:3000/roles/${id}`)
       getAllRoles()

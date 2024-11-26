@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Layout from '../layout/Layout';
 import axios from 'axios';
 import toast from 'react-hot-toast';
@@ -12,7 +12,22 @@ function AddRole() {
 
   const [errors, setErrors] = useState({});
 
-  const permissionsList = ['Read', 'Write', 'Update', 'Delete']; // Permission options
+  const [permissionsList,setPermissionsList] =useState([])
+  const getPermission=async()=>{
+    try {
+      const res=await axios.get("http://localhost:3000/permission")
+      setPermissionsList(res.data)
+      // console.log("res", res.data)
+      console.log("permi",permissionsList)
+      // toast.success("Role Deleted")
+    } catch (error) {
+      console.log("error", error)
+    }
+  }
+  useEffect(()=>{
+    getPermission();
+    // console.log("permi",permissionsList)
+  },[])
 
   const handleInput = (e) => {
     const { name, value, type, checked } = e.target;
@@ -48,7 +63,7 @@ function AddRole() {
         { headers: { 'Content-Type': 'application/json' } }
       );
       toast.success('Role added successfully');
-      setInput({ role: '', permissions: [], status: 'Active' }); // Reset form
+      setInput({ role: '', permissions: [], status: 'Active' });
     } catch (error) {
       console.error('Error adding role:', error);
     }
@@ -83,19 +98,20 @@ function AddRole() {
 
                 <div className="mb-4">
                   <label className="block text-gray-600 mb-1">Permissions</label>
-                  {permissionsList.map((permission) => (
-                    <div key={permission} className="flex items-center mb-2">
+                  {/* {console.log("per,",permissionsList)} */}
+                  {permissionsList.map((data) => (
+                    <div key={data.id} className="flex items-center mb-2">
                       <input
                         type="checkbox"
-                        id={permission}
+                        id={data.permission}
                         name="permissions"
-                        value={permission}
-                        checked={input.permissions.includes(permission)}
+                        value={data.permission}
+                        checked={input.permissions.includes(data.permission)}
                         onChange={handleInput}
                         className="mr-2"
                       />
-                      <label htmlFor={permission} className="text-gray-700">
-                        {permission}
+                      <label htmlFor={data.permission} className="text-gray-700">
+                        {data.permission}
                       </label>
                     </div>
                   ))}

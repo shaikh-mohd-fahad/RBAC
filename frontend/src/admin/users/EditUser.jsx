@@ -13,9 +13,25 @@ function EditUser() {
         role: '',
         status: 'Active'
     });
-    const [errors, setErrors] = useState({}); // Added state for validation errors
 
-    //fetching user's data
+    const [allRole,setAllRole]=useState([]);
+  const getAllRole=async()=>{
+    try {
+      const res=await axios.get("http://localhost:3000/roles");
+      // console.log("res",res.data)
+      setAllRole(res.data)
+    } catch (error) {
+      console.log("error",error)
+    }
+  }
+  useEffect(()=>{
+    getAllRole()
+  },[])
+
+
+    const [errors, setErrors] = useState({}); 
+
+    //fetching user's data fahad
     const getUserData = async () => {
         try {
             const res = await axios.get('http://localhost:3000/users/' + userId)
@@ -136,9 +152,11 @@ function EditUser() {
                                         name="role"
                                     >
                                         <option value="" disabled>Select a role</option>
-                                        <option value="admin">Admin</option>
-                                        <option value="editor">Editor</option>
-                                        <option value="viewer">Viewer</option>
+                                        {
+                      allRole.length>0 && allRole.map((data)=>(
+                   ( <option value={data.role} className='' key={data.id}>{data.role.charAt(0).toUpperCase() + data.role.slice(1).toLowerCase()}</option>)
+                      ))
+                    }
                                     </select>
                                     {errors.role && <p className="text-red-500 text-sm">{errors.role}</p>}
                                 </div>
