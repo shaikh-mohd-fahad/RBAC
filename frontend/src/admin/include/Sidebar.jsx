@@ -4,7 +4,7 @@ import { MdDashboard, MdGroup, MdSecurity, MdLock } from "react-icons/md";
 
 function Sidebar() {
   return (
-    <div className="drawer lg:drawer-open bg-gray-100">
+    <div className="drawer lg:drawer-open bg-gray-50 h-full">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content flex flex-col items-center justify-center">
         <label

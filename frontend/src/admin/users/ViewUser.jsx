@@ -25,8 +25,8 @@ function ViewUser() {
   return (
     <Layout>
       <div className="container mx-auto p-6">
-        <h1 className="text-4xl font-bold text-center text-gray-800 mb-12">
-          User <span className="text-blue-600">Profile</span>
+        <h1 className="text-3xl font-extrabold text-center text-gray-800 mb-12">
+          User <span className="text-blue-600">PROFILE</span>
         </h1>
         <div className="flex flex-col md:flex-row items-center bg-white shadow-lg rounded-lg p-6">
           <div className="flex justify-center md:w-1/3 mb-6 md:mb-0">

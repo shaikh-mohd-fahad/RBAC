@@ -29,16 +29,61 @@
       "status": "Active"
     }
   ],
-  "posts": [
+  "roles": [
     {
-      "id": "1",
-      "title": "Post One",
-      "author": "Alice"
+      "id": "b5fb",
+      "role": "admin",
+      "permissions": [
+        "Read",
+        "Write",
+        "Update",
+        "Delete"
+      ],
+      "status": "Active"
     },
     {
-      "id": "2",
-      "title": "Post Two",
-      "author": "Bob"
+      "id": "1ffb",
+      "role": "editor",
+      "permissions": [
+        "Update",
+        "Read",
+        "Delete"
+      ],
+      "status": "Active"
+    },
+    {
+      "role": "viewer",
+      "permissions": [
+        "Read",
+        "Delete"
+      ],
+      "status": "Active",
+      "id": "053a"
     }
-  ]
+  ],
+  "permission":[
+    {
+      "permission": "Create",
+      "description": "Allows the user to create new records or data."
+    },
+    {
+      "permission": "Read",
+      "description": "Grants access to view existing records or data."
+    },
+    {
+      "permission": "Update",
+      "description": "Enables the user to modify or edit existing records or data."
+    },
+    {
+      "permission": "Delete",
+      "description": "Allows the user to remove or delete existing records or data."
+    }
+  ],
+  "stats": {
+    "totalUsers": 1200,
+    "activeUsers": 950,
+    "adminUsers": 50,
+    "totalRoles": 10
+  }
+  
 }
