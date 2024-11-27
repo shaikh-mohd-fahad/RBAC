@@ -6,12 +6,12 @@ function Sidebar() {
   return (
     <div className="drawer lg:drawer-open bg-gray-50 h-full">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-      <div className="drawer-side" style={{ height: "calc(100vh - 60px)" }}>
+      {/* style={{ height: "calc(100vh - 60px)" }} */}
+      <div className="drawer-side" >
         <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
+        {/* style={{ height: "calc(100vh - 60px)" }} */}
         <ul
-          className="menu p-4 w-64 bg-gray-50 text-gray-800 border-r border-gray-200"
-          style={{ height: "calc(100vh - 60px)" }}
-        >
+          className="menu p-4 w-64 bg-gray-50 text-gray-800 h-full">
           <li className="mb-2">
             <Link to="/admin/dashboard" className="flex items-center gap-3">
               <MdDashboard className="text-gray-500 text-lg" />

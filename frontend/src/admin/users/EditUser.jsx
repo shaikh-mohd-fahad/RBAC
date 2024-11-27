@@ -14,22 +14,22 @@ function EditUser() {
         status: 'Active'
     });
 
-    const [allRole,setAllRole]=useState([]);
-  const getAllRole=async()=>{
-    try {
-      const res=await axios.get("http://localhost:3000/roles");
-      // console.log("res",res.data)
-      setAllRole(res.data)
-    } catch (error) {
-      console.log("error",error)
+    const [allRole, setAllRole] = useState([]);
+    const getAllRole = async () => {
+        try {
+            const res = await axios.get("http://localhost:3000/roles");
+            // console.log("res",res.data)
+            setAllRole(res.data)
+        } catch (error) {
+            console.log("error", error)
+        }
     }
-  }
-  useEffect(()=>{
-    getAllRole()
-  },[])
+    useEffect(() => {
+        getAllRole()
+    }, [])
 
 
-    const [errors, setErrors] = useState({}); 
+    const [errors, setErrors] = useState({});
 
     //fetching user's data fahad
     const getUserData = async () => {
@@ -102,91 +102,86 @@ function EditUser() {
     return (
         <Layout>
 
-            <div className="container mx-auto p-6">
-                <h1 className="text-3xl font-extrabold text-center text-gray-800 mb-8">
+            <div className="container mx-auto p-4 sm:p-6 lg:p-8">
+                <h1 className="text-2xl sm:text-3xl font-extrabold text-center text-gray-800 mb-6 sm:mb-8">
                     Edit <span className="text-blue-700">USER</span>
                 </h1>
-                <div className='flex flex-row'>
-                    <div className='basis-1/4'></div>
-                    <div className='basis-1/2'>
-                        <div className="max-w-md mx-auto p-6 bg-white shadow-md rounded-lg">
-                            <form onSubmit={handleFormSubmit} method="post">
-                                <div className="mb-4">
-                                    <label htmlFor="name" className="block text-gray-600 mb-1">Name</label>
-                                    <input
-                                        type="text"
-                                        id="name"
-                                        placeholder="Enter name"
-                                        name="name"
-                                        value={input.name}
-                                        required
-                                        onChange={handleInput}
-                                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
-                                    />
-                                    {errors.name && <p className="text-red-500 text-sm">{errors.name}</p>}
-                                </div>
+                <div className="flex justify-center">
+                    <div className="w-full max-w-lg p-4 sm:p-6 bg-white shadow-md rounded-lg">
+                        <form onSubmit={handleFormSubmit} method="post">
+                            <div className="mb-4">
+                                <label htmlFor="name" className="block text-gray-600 mb-1">Name</label>
+                                <input
+                                    type="text"
+                                    id="name"
+                                    placeholder="Enter name"
+                                    name="name"
+                                    value={input.name}
+                                    required
+                                    onChange={handleInput}
+                                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
+                                />
+                                {errors.name && <p className="text-red-500 text-sm">{errors.name}</p>}
+                            </div>
 
-                                <div className="mb-4">
-                                    <label htmlFor="email" className="block text-gray-600 mb-1">Email</label>
-                                    <input
-                                        type="email"
-                                        id="email"
-                                        name="email"
-                                        value={input.email}
-                                        onChange={handleInput}
-                                        placeholder="Enter email"
-                                        required
-                                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
-                                    />
-                                    {errors.email && <p className="text-red-500 text-sm">{errors.email}</p>}
-                                </div>
+                            <div className="mb-4">
+                                <label htmlFor="email" className="block text-gray-600 mb-1">Email</label>
+                                <input
+                                    type="email"
+                                    id="email"
+                                    name="email"
+                                    value={input.email}
+                                    onChange={handleInput}
+                                    placeholder="Enter email"
+                                    required
+                                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
+                                />
+                                {errors.email && <p className="text-red-500 text-sm">{errors.email}</p>}
+                            </div>
 
-                                <div className="mb-4">
-                                    <label htmlFor="role" className="block text-gray-600 mb-1">Role</label>
-                                    <select
-                                        id="role"
-                                        onChange={handleInput}
-                                        value={input.role}
-                                        required
-                                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
-                                        name="role"
-                                    >
-                                        <option value="" disabled>Select a role</option>
-                                        {
-                      allRole.length>0 && allRole.map((data)=>(
-                   ( <option value={data.role} className='' key={data.id}>{data.role.charAt(0).toUpperCase() + data.role.slice(1).toLowerCase()}</option>)
-                      ))
-                    }
-                                    </select>
-                                    {errors.role && <p className="text-red-500 text-sm">{errors.role}</p>}
-                                </div>
-
-
-                                <div className="mb-4">
-                                    <label htmlFor="status" className="block text-gray-600 mb-1">Status</label>
-                                    <select
-                                        id="status"
-                                        name="status"
-                                        onChange={handleInput}
-                                        value={input.status}
-                                        required
-                                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
-                                    >
-                                        <option value="Active">Active</option>
-                                        <option value="Disabled">Disabled</option>
-                                    </select>
-                                    {errors.status && <p className="text-red-500 text-sm">{errors.status}</p>}
-                                </div>
-
-                                <button
-                                    type="submit"
-                                    className="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 transition"
+                            <div className="mb-4">
+                                <label htmlFor="role" className="block text-gray-600 mb-1">Role</label>
+                                <select
+                                    id="role"
+                                    onChange={handleInput}
+                                    value={input.role}
+                                    required
+                                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
+                                    name="role"
                                 >
-                                    Update User Detail
-                                </button>
-                            </form>
-                        </div>
+                                    <option value="" disabled>Select a role</option>
+                                    {
+                                        allRole.length > 0 && allRole.map((data) => (
+                                            (<option value={data.role} className='' key={data.id}>{data.role.charAt(0).toUpperCase() + data.role.slice(1).toLowerCase()}</option>)
+                                        ))
+                                    }
+                                </select>
+                                {errors.role && <p className="text-red-500 text-sm">{errors.role}</p>}
+                            </div>
 
+                            <div className="mb-4">
+                                <label htmlFor="status" className="block text-gray-600 mb-1">Status</label>
+                                <select
+                                    id="status"
+                                    name="status"
+                                    onChange={handleInput}
+                                    value={input.status}
+                                    required
+                                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
+                                >
+                                    <option value="Active">Active</option>
+                                    <option value="Disabled">Disabled</option>
+                                </select>
+                                {errors.status && <p className="text-red-500 text-sm">{errors.status}</p>}
+                            </div>
+
+                            <button
+                                type="submit"
+                                className="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 transition"
+                            >
+                                Update User Detail
+                            </button>
+                        </form>
                     </div>
                 </div>
             </div>

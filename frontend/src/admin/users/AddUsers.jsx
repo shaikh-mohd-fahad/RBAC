@@ -10,20 +10,23 @@ function AddUsers() {
     role: '',
     status: 'Active'
   });
-  const [allRole,setAllRole]=useState([]);
-  const getAllRole=async()=>{
+  const [allRole, setAllRole] = useState([]);
+
+  const getAllRole = async () => {
     try {
-      const res=await axios.get("http://localhost:3000/roles");
-      // console.log("res",res.data)
-      setAllRole(res.data)
+      const res = await axios.get("http://localhost:3000/roles");
+      // console.log("res", res.data)
+      setAllRole(res.data);
     } catch (error) {
-      console.log("error",error)
+      console.log("error", error);
     }
-  }
-  useEffect(()=>{
-    getAllRole()
-  },[])
-  const [errors, setErrors] = useState({}); 
+  };
+
+  useEffect(() => {
+    getAllRole();
+  }, []);
+
+  const [errors, setErrors] = useState({});
 
   const handleInput = (e) => {
     const { name, value } = e.target;
@@ -47,7 +50,7 @@ function AddUsers() {
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
-    if (!validateForm()) return; 
+    if (!validateForm()) return;
 
     try {
       const res = await axios.post(
@@ -69,15 +72,15 @@ function AddUsers() {
 
   return (
     <Layout>
-      <div className="container mx-auto p-6">
-        <h1 className="text-3xl font-extrabold text-center text-gray-800 mb-8">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <h1 className="text-2xl sm:text-3xl font-extrabold text-center text-gray-800 mb-6 sm:mb-8">
           Add <span className="text-blue-700">NEW USER</span>
         </h1>
-        <div className="flex flex-row">
-          <div className="basis-1/4"></div>
-          <div className="basis-1/2">
-            <div className="max-w-md mx-auto p-6 bg-white shadow-md rounded-lg">
+        <div className="flex flex-col items-center">
+          <div className="w-full sm:max-w-md">
+            <div className="p-4 sm:p-6 bg-white shadow-md rounded-lg">
               <form onSubmit={handleFormSubmit} method="post">
+                {/* Name input */}
                 <div className="mb-4">
                   <label htmlFor="name" className="block text-gray-600 mb-1">
                     Name
@@ -95,6 +98,7 @@ function AddUsers() {
                   {errors.name && <p className="text-red-500 text-sm">{errors.name}</p>}
                 </div>
 
+                {/* Email input */}
                 <div className="mb-4">
                   <label htmlFor="email" className="block text-gray-600 mb-1">
                     Email
@@ -112,9 +116,10 @@ function AddUsers() {
                   {errors.email && <p className="text-red-500 text-sm">{errors.email}</p>}
                 </div>
 
+                {/* Role select */}
                 <div className="mb-4">
                   <label htmlFor="role" className="block text-gray-600 mb-1">
-                    Role {console.log("role ke paas",allRole)}
+                    Role {console.log("role ke paas", allRole)}
                   </label>
                   <select
                     id="role"
@@ -128,14 +133,15 @@ function AddUsers() {
                       Select a role
                     </option>
                     {
-                      allRole.length>0 && allRole.map((data)=>(
-                   ( <option value={data.role} className='' key={data.id}>{data.role.charAt(0).toUpperCase() + data.role.slice(1).toLowerCase()}</option>)
+                      allRole.length > 0 && allRole.map((data) => (
+                        (<option value={data.role} className='' key={data.id}>{data.role.charAt(0).toUpperCase() + data.role.slice(1).toLowerCase()}</option>)
                       ))
                     }
                   </select>
                   {errors.role && <p className="text-red-500 text-sm">{errors.role}</p>}
                 </div>
 
+                {/* Status select */}
                 <div className="mb-4">
                   <label htmlFor="status" className="block text-gray-600 mb-1">
                     Status
@@ -153,6 +159,7 @@ function AddUsers() {
                   </select>
                 </div>
 
+                {/* Submit button */}
                 <button
                   type="submit"
                   className="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 transition"

@@ -16,22 +16,24 @@ function EditRole() {
   });
 
   const [errors, setErrors] = useState({});
-  const [permissionsList,setPermissionsList] =useState([])
-  const getPermission=async()=>{
+  const [permissionsList, setPermissionsList] = useState([]);
+
+  const getPermission = async () => {
     try {
-      const res=await axios.get("http://localhost:3000/permission")
-      setPermissionsList(res.data)
+      const res = await axios.get('http://localhost:3000/permission');
+      setPermissionsList(res.data);
       // console.log("res", res.data)
-      console.log("permi",permissionsList)
+      console.log('permi', permissionsList);
       // toast.success("Role Deleted")
     } catch (error) {
-      console.log("error", error)
+      console.log('error', error);
     }
-  }
-  useEffect(()=>{
+  };
+
+  useEffect(() => {
     getPermission();
     // console.log("permi",permissionsList)
-  },[])
+  }, []);
 
   useEffect(() => {
     const fetchRoleData = async () => {
@@ -77,7 +79,8 @@ function EditRole() {
 
     try {
       await axios.put(
-        `http://localhost:3000/roles/${id}`,{ ...input },
+        `http://localhost:3000/roles/${id}`,
+        { ...input },
         { headers: { 'Content-Type': 'application/json' } }
       );
       toast.success('Role updated successfully');
@@ -89,35 +92,34 @@ function EditRole() {
 
   return (
     <Layout>
-      <div className="container mx-auto p-6">
-        <h1 className="text-3xl font-extrabold text-center text-gray-800 mb-8">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <h1 className="text-2xl sm:text-3xl font-extrabold text-center text-gray-800 mb-4 sm:mb-8">
           Edit <span className="text-green-600">ROLE</span>
         </h1>
-        <div className="flex flex-row">
-          <div className="basis-1/4"></div>
-          <div className="basis-1/2">
-            <div className="max-w-md mx-auto p-6 bg-white shadow-md rounded-lg">
-              <form onSubmit={handleFormSubmit} method="post">
-                <div className="mb-4">
-                  <label htmlFor="role" className="block text-gray-600 mb-1">
-                    Role
-                  </label>
-                  <input
-                    type="text"
-                    id="role"
-                    placeholder="Enter role"
-                    name="role"
-                    value={input.role}
-                    onChange={handleInput}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
-                  />
-                  {errors.role && <p className="text-red-500 text-sm">{errors.role}</p>}
-                </div>
+        <div className="flex flex-col items-center sm:flex-row sm:justify-center">
+          <div className="sm:basis-1/4 hidden sm:block"></div>
+          <div className="w-full sm:max-w-md sm:basis-1/2 p-4 sm:p-6 bg-white shadow-md rounded-lg">
+            <form onSubmit={handleFormSubmit} method="post">
+              <div className="mb-4">
+                <label htmlFor="role" className="block text-sm sm:text-base text-gray-600 mb-1">
+                  Role
+                </label>
+                <input
+                  type="text"
+                  id="role"
+                  placeholder="Enter role"
+                  name="role"
+                  value={input.role}
+                  onChange={handleInput}
+                  className="w-full px-2 py-1 sm:px-3 sm:py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
+                />
+                {errors.role && <p className="text-red-500 text-xs sm:text-sm">{errors.role}</p>}
+              </div>
 
-                <div className="mb-4">
-                  <label className="block text-gray-600 mb-1">Permissions</label>
-                  {permissionsList.map((data) => (
-                    <div key={data.id} className="flex items-center mb-2">
+              <div className="mb-4">
+                <label className="block text-sm sm:text-base text-gray-600 mb-1">Permissions</label>
+                {permissionsList.map((data) => (
+                  <div key={data.id} className="flex items-center mb-1 sm:mb-2">
                     <input
                       type="checkbox"
                       id={data.permission}
@@ -127,40 +129,39 @@ function EditRole() {
                       onChange={handleInput}
                       className="mr-2"
                     />
-                    <label htmlFor={data.permission} className="text-gray-700">
+                    <label htmlFor={data.permission} className="text-gray-700 text-xs sm:text-sm">
                       {data.permission}
                     </label>
                   </div>
-                  ))}
-                  {errors.permissions && (
-                    <p className="text-red-500 text-sm">{errors.permissions}</p>
-                  )}
-                </div>
+                ))}
+                {errors.permissions && (
+                  <p className="text-red-500 text-xs sm:text-sm">{errors.permissions}</p>
+                )}
+              </div>
 
-                <div className="mb-4">
-                  <label htmlFor="status" className="block text-gray-600 mb-1">
-                    Status
-                  </label>
-                  <select
-                    id="status"
-                    name="status"
-                    value={input.status}
-                    onChange={handleInput}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
-                  >
-                    <option value="Active">Active</option>
-                    <option value="Disabled">Disabled</option>
-                  </select>
-                </div>
-
-                <button
-                  type="submit"
-                  className="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 transition"
+              <div className="mb-4">
+                <label htmlFor="status" className="block text-sm sm:text-base text-gray-600 mb-1">
+                  Status
+                </label>
+                <select
+                  id="status"
+                  name="status"
+                  value={input.status}
+                  onChange={handleInput}
+                  className="w-full px-2 py-1 sm:px-3 sm:py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
                 >
-                  Update Role
-                </button>
-              </form>
-            </div>
+                  <option value="Active">Active</option>
+                  <option value="Disabled">Disabled</option>
+                </select>
+              </div>
+
+              <button
+                type="submit"
+                className="w-full bg-blue-500 text-white py-1 sm:py-2 rounded-md hover:bg-blue-600 transition text-sm sm:text-base"
+              >
+                Update Role
+              </button>
+            </form>
           </div>
         </div>
       </div>

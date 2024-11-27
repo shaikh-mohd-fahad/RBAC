@@ -55,19 +55,12 @@
       "role": "viewer",
       "permissions": [
         "Read",
-        "Delete"
+        "Delete",
+        "Update",
+        "Create"
       ],
-      "status": "Active",
+      "status": "Disabled",
       "id": "053a"
-    },
-    {
-      "role": "test",
-      "permissions": [
-        "Create",
-        "Update"
-      ],
-      "status": "Active",
-      "id": "286e"
     }
   ],
   "permission": [

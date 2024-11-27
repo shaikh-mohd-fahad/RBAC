@@ -28,7 +28,7 @@ function Navbar() {
     {/* Sidebar toggle button */}
     <label
       htmlFor="my-drawer-2"
-      className="tn btn-ghost drawer-button lg:hidden"
+      className="tn btn-ghost drawer-button lg:hidden p-3 rounded-md"
     >
       <svg
           xmlns="http://www.w3.org/2000/svg"

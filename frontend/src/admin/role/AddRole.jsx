@@ -12,22 +12,22 @@ function AddRole() {
 
   const [errors, setErrors] = useState({});
 
-  const [permissionsList,setPermissionsList] =useState([])
-  const getPermission=async()=>{
+  const [permissionsList, setPermissionsList] = useState([]);
+  const getPermission = async () => {
     try {
-      const res=await axios.get("http://localhost:3000/permission")
-      setPermissionsList(res.data)
+      const res = await axios.get("http://localhost:3000/permission");
+      setPermissionsList(res.data);
       // console.log("res", res.data)
-      console.log("permi",permissionsList)
+      console.log("permi", permissionsList);
       // toast.success("Role Deleted")
     } catch (error) {
-      console.log("error", error)
+      console.log("error", error);
     }
-  }
-  useEffect(()=>{
+  };
+  useEffect(() => {
     getPermission();
     // console.log("permi",permissionsList)
-  },[])
+  }, []);
 
   const handleInput = (e) => {
     const { name, value, type, checked } = e.target;
@@ -71,17 +71,17 @@ function AddRole() {
 
   return (
     <Layout>
-      <div className="container mx-auto p-6">
-        <h1 className="text-3xl font-extrabold text-center text-gray-800 mb-8">
+      <div className="container mx-auto p-4 sm:p-6">
+        <h1 className="text-2xl sm:text-3xl font-extrabold text-center text-gray-800 mb-6 sm:mb-8">
           Add <span className="text-green-600">NEW ROLE</span>
         </h1>
-        <div className="flex flex-row">
-          <div className="basis-1/4"></div>
-          <div className="basis-1/2">
-            <div className="max-w-md mx-auto p-6 bg-white shadow-md rounded-lg">
+        <div className="flex flex-col sm:flex-row">
+          <div className="basis-0 sm:basis-1/4"></div>
+          <div className="w-full sm:basis-1/2">
+            <div className="max-w-md mx-auto p-4 sm:p-6 bg-white shadow-md rounded-lg">
               <form onSubmit={handleFormSubmit} method="post">
                 <div className="mb-4">
-                  <label htmlFor="role" className="block text-gray-600 mb-1">
+                  <label htmlFor="role" className="block text-sm sm:text-base text-gray-600 mb-1">
                     Role
                   </label>
                   <input
@@ -91,13 +91,13 @@ function AddRole() {
                     name="role"
                     value={input.role}
                     onChange={handleInput}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
+                    className="w-full px-3 py-2 text-sm sm:text-base border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
                   />
-                  {errors.role && <p className="text-red-500 text-sm">{errors.role}</p>}
+                  {errors.role && <p className="text-red-500 text-xs sm:text-sm">{errors.role}</p>}
                 </div>
 
                 <div className="mb-4">
-                  <label className="block text-gray-600 mb-1">Permissions</label>
+                  <label className="block text-sm sm:text-base text-gray-600 mb-1">Permissions</label>
                   {/* {console.log("per,",permissionsList)} */}
                   {permissionsList.map((data) => (
                     <div key={data.id} className="flex items-center mb-2">
@@ -110,18 +110,18 @@ function AddRole() {
                         onChange={handleInput}
                         className="mr-2"
                       />
-                      <label htmlFor={data.permission} className="text-gray-700">
+                      <label htmlFor={data.permission} className="text-sm sm:text-base text-gray-700">
                         {data.permission}
                       </label>
                     </div>
                   ))}
                   {errors.permissions && (
-                    <p className="text-red-500 text-sm">{errors.permissions}</p>
+                    <p className="text-red-500 text-xs sm:text-sm">{errors.permissions}</p>
                   )}
                 </div>
 
                 <div className="mb-4">
-                  <label htmlFor="status" className="block text-gray-600 mb-1">
+                  <label htmlFor="status" className="block text-sm sm:text-base text-gray-600 mb-1">
                     Status
                   </label>
                   <select
@@ -129,7 +129,7 @@ function AddRole() {
                     name="status"
                     value={input.status}
                     onChange={handleInput}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
+                    className="w-full px-3 py-2 text-sm sm:text-base border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
                   >
                     <option value="Active">Active</option>
                     <option value="Disabled">Disabled</option>
@@ -138,7 +138,7 @@ function AddRole() {
 
                 <button
                   type="submit"
-                  className="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 transition"
+                  className="w-full bg-blue-500 text-white py-2 text-sm sm:text-base rounded-md hover:bg-blue-600 transition"
                 >
                   Add Role
                 </button>

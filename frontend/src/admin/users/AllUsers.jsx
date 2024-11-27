@@ -17,16 +17,17 @@ function AllUsers() {
       console.log("Error fetching users:", error);
     }
   };
-  const handleDeleteUser=async (id)=>{
-    // console.log(id)
+
+  const handleDeleteUser = async (id) => {
+    // Deleting user by id
     try {
-      const res=await axios.delete(`http://localhost:3000/users/${id}`)
-      getAllUsers()
-      toast.success("User Deleted")
+      const res = await axios.delete(`http://localhost:3000/users/${id}`);
+      getAllUsers(); 
+      toast.success("User Deleted");
     } catch (error) {
-      console.log("error", error)
+      console.log("error", error);
     }
-  }
+  };
 
   useEffect(() => {
     getAllUsers();
@@ -34,16 +35,17 @@ function AllUsers() {
 
   return (
     <Layout>
-      <div className="container mx-auto p-6">
-        <h1 className="text-3xl font-extrabold text-center text-gray-800 mb-8">
+      <div className="container mx-auto p-4 sm:p-6">
+        <h1 className="text-2xl sm:text-3xl font-extrabold text-center text-gray-800 mb-6 sm:mb-8">
           All <span className="text-blue-700">USERS</span>
         </h1>
-        <div className="flex justify-between items-center mb-6">
+        <div className="flex flex-wrap justify-between items-center mb-4 sm:mb-6 gap-4">
           <p className="text-gray-600">Manage all registered users here.</p>
           <Link to="/admin/adduser">
-          <button
-            className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md shadow-md transition duration-200">Add User</button>
-            </Link>
+            <button className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md shadow-md transition duration-200">
+              Add User
+            </button>
+          </Link>
         </div>
         <div className="bg-white shadow-lg rounded-lg overflow-hidden">
           <div className="p-4">
@@ -102,28 +104,29 @@ function AllUsers() {
                           </span>
                         </td>
                         <td className="px-4 py-2 border-b text-center">
-                          <div className="flex items-center justify-center gap-3">
+                          <div className="flex items-center justify-center gap-2 sm:gap-3">
                             <Link to={`/admin/viewuser/${data.id}`}>
-                            <button
-                              title="View"
-                              className="text-blue-500 hover:text-blue-600"
-                            >
-                              
-                              <FaEye className="text-lg" />
-                            </button>
+                              <button
+                                title="View"
+                                className="text-blue-500 hover:text-blue-600"
+                              >
+                                <FaEye className="text-lg" />
+                              </button>
                             </Link>
                             <Link to={`/admin/edituser/${data.id}`}>
-                            <button
-                              title="Edit"
-                              className="text-green-500 hover:text-green-600"
-                            >
-                              <FaEdit className="text-lg" />
-                            </button>
+                              <button
+                                title="Edit"
+                                className="text-green-500 hover:text-green-600"
+                              >
+                                <FaEdit className="text-lg" />
+                              </button>
                             </Link>
                             <button
                               title="Delete"
                               className="text-red-500 hover:text-red-600"
-                              onClick={()=>{handleDeleteUser(data.id)}}
+                              onClick={() => {
+                                handleDeleteUser(data.id);
+                              }}
                             >
                               <MdDelete className="text-lg" />
                             </button>
