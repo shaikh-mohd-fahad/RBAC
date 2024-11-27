@@ -3,7 +3,7 @@ import Layout from '../layout/Layout';
 import axios from 'axios';
 import toast from 'react-hot-toast';
 
-function AddUsers() {
+function AddUsers({page}) {
   const [input, setInput] = useState({
     name: '',
     email: '',
@@ -71,7 +71,7 @@ function AddUsers() {
   };
 
   return (
-    <Layout>
+    <Layout page={page}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6">
         <h1 className="text-2xl sm:text-3xl font-extrabold text-center text-gray-800 mb-6 sm:mb-8">
           Add <span className="text-blue-700">NEW USER</span>

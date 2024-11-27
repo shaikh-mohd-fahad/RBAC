@@ -1,17 +1,15 @@
 import React, { useEffect, useState } from "react";
 import Layout from "../layout/Layout";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
-import Modal from "./Modal";
-import { FaEdit } from "react-icons/fa";
-import { MdDelete } from "react-icons/md";
 
 function Permission({ page }) {
   const [permission, setPermission] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false); 
   const [editPermission, setEditPermission] = useState(null); 
-  const [permissionName, setPermissionName] = useState("");
-  const [permissionDescription, setPermissionDescription] = useState(""); 
+  const [permissionName, setPermissionName] = useState(""); 
+  const [permissionDescription, setPermissionDescription] = useState("");
 
   const getAllPermission = async () => {
     try {
@@ -22,6 +20,17 @@ function Permission({ page }) {
       console.log("Error fetching permission:", error);
     }
   };
+
+  // const handleDeleteRole=async (id)=>{
+  //   console.log(id)
+  //   try {
+  //     const res=await axios.delete(`http://localhost:3000/roles/${id}`)
+  //     getAllRoles()
+  //     toast.success("Role Deleted")
+  //   } catch (error) {
+  //     console.log("error", error)
+  //   }
+  // }
 
   const openAddModal = () => {
     setIsModalOpen(true);
@@ -43,16 +52,7 @@ function Permission({ page }) {
     setPermissionName("");
     setPermissionDescription("");
   };
-// const handleDeleteRole=async (id)=>{
-  //   console.log(id)
-  //   try {
-  //     const res=await axios.delete(`http://localhost:3000/roles/${id}`)
-  //     getAllRoles()
-  //     toast.success("Role Deleted")
-  //   } catch (error) {
-  //     console.log("error", error)
-  //   }
-  // }
+
   const handleAddPermission = async () => {
     try {
       const res = await axios.post("http://localhost:3000/permission", {
@@ -104,15 +104,13 @@ function Permission({ page }) {
         <h1 className="text-3xl font-extrabold text-center text-gray-800 mb-4">
           All <span className="text-cyan-500">PERMISSION</span>
         </h1>
-        <div className="flex justify-between items-center mb-6">
-          <p className="text-gray-600">Manage all registered permissions here.</p>
+        {/* <div className="flex justify-between items-center mb-6">
+          <p className="text-gray-600">Manage all registered permission here.</p>
+          <Link to="/admin/addrole">
           <button
-            onClick={openAddModal} // Open the modal for adding permission
-            className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md shadow-md transition duration-200"
-          >
-            Add Permission
-          </button>
-        </div>
+            className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md shadow-md transition duration-200">Add Role</button>
+            </Link>
+        </div> */}
         <div className="bg-white shadow-lg rounded-lg overflow-hidden">
           <div className="p-4">
             <div className="overflow-x-auto">
@@ -150,20 +148,18 @@ function Permission({ page }) {
                           {data.description}
                         </td>
                         <td className="px-4 py-2 border-b text-gray-700">
-                        <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
                           <button
                             onClick={() => openEditModal(data)}
-                            className="text-green-500 hover:text-green-600"
+                            className="text-yellow-500 hover:text-yellow-700 mx-2"
                           >
-                            <FaEdit className="text-lg" />
+                            Edit
                           </button>
                           <button
                             onClick={() => handleDeletePermission(data.id)}
-                            className="text-red-500 hover:text-red-600"
+                            className="text-red-500 hover:text-red-700 mx-2"
                           >
-                            <MdDelete className="text-lg" />
+                            Delete
                           </button>
-                          </div>
                         </td>
                       </tr>
                     ))
@@ -186,16 +182,47 @@ function Permission({ page }) {
 
       {/* Modal for Add/Edit Permission */}
       {isModalOpen && (
-        <Modal
-          permissionName={permissionName}
-          setPermissionName={setPermissionName}
-          permissionDescription={permissionDescription}
-          setPermissionDescription={setPermissionDescription}
-          handleAddPermission={handleAddPermission}
-          handleEditPermission={handleEditPermission}
-          editPermission={editPermission}
-          closeModal={closeModal}
-        />
+        <div className="fixed inset-0 bg-gray-500 bg-opacity-50 flex justify-center items-center z-50">
+          <div className="bg-white rounded-lg p-6 w-96">
+            <h2 className="text-2xl font-semibold mb-4">
+              {editPermission ? "Edit Permission" : "Add Permission"}
+            </h2>
+            <div className="mb-4">
+              <label className="block text-gray-600 mb-2">Permission Name</label>
+              <input
+                type="text"
+                value={permissionName}
+                onChange={(e) => setPermissionName(e.target.value)}
+                className="w-full p-2 border border-gray-300 rounded-md"
+                required
+              />
+            </div>
+            <div className="mb-4">
+              <label className="block text-gray-600 mb-2">Description</label>
+              <input
+                type="text"
+                value={permissionDescription}
+                onChange={(e) => setPermissionDescription(e.target.value)}
+                className="w-full p-2 border border-gray-300 rounded-md"
+                required
+              />
+            </div>
+            <div className="flex justify-end">
+              <button
+                onClick={closeModal}
+                className="bg-gray-300 hover:bg-gray-400 text-white px-4 py-2 rounded-md mr-2"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={editPermission ? handleEditPermission : handleAddPermission}
+                className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md"
+              >
+                {editPermission ? "Save Changes" : "Add Permission"}
+              </button>
+            </div>
+          </div>
+        </div>
       )}
     </Layout>
   );

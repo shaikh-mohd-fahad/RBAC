@@ -4,7 +4,7 @@ import axios from 'axios';
 import toast from 'react-hot-toast';
 import { useParams } from 'react-router-dom';
 
-function ViewUser() {
+function ViewUser({page}) {
   const userId = useParams().id;
   const [userProfile, setUserProfile] = useState({});
 
@@ -23,7 +23,7 @@ function ViewUser() {
   }, []);
 
   return (
-    <Layout>
+    <Layout page={page}>
       <div className="container mx-auto p-6">
         <h1 className="text-3xl font-extrabold text-center text-gray-800 mb-12">
           User <span className="text-blue-600">PROFILE</span>

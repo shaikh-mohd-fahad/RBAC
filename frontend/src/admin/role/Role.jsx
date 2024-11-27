@@ -6,7 +6,7 @@ import { MdDelete } from "react-icons/md";
 import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
 
-function Role() {
+function Role({page}) {
   const [roles, setRoles] = useState([]);
 
   const getAllRoles = async () => {
@@ -34,7 +34,7 @@ function Role() {
   }, []);
 
   return (
-    <Layout>
+    <Layout page={page}>
       <div className="container mx-auto p-6">
         <h1 className="text-3xl font-extrabold text-center text-gray-800 mb-8">
           All <span className="text-green-600">ROLES</span>

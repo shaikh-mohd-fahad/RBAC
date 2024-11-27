@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Layout from './layout/Layout';
 
-function Dashboard() {
+function Dashboard({page}) {
   const [stats, setStats] = useState({});
   const [permissions, setPermissions] = useState([]);
 
@@ -22,9 +22,8 @@ function Dashboard() {
 
     fetchData();
   }, []);
-
   return (
-    <Layout>
+    <Layout page={page}>
       {/* bg-gradient-to-r from-gray-100 to-blue-100 */}
     <div className="min-h-screen  py-8 px-6">
       <div className="container mx-auto">

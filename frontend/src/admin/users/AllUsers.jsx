@@ -6,7 +6,7 @@ import { MdDelete } from "react-icons/md";
 import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
 
-function AllUsers() {
+function AllUsers({page}) {
   const [users, setUsers] = useState([]);
 
   const getAllUsers = async () => {
@@ -34,7 +34,7 @@ function AllUsers() {
   }, []);
 
   return (
-    <Layout>
+    <Layout page={page}>
       <div className="container mx-auto p-4 sm:p-6">
         <h1 className="text-2xl sm:text-3xl font-extrabold text-center text-gray-800 mb-6 sm:mb-8">
           All <span className="text-blue-700">USERS</span>

@@ -9,24 +9,10 @@
     },
     {
       "id": "6904",
-      "name": "inr",
+      "name": "fahad",
       "email": "fahadazmilko@gmail.com",
       "role": "admin",
       "status": "Active"
-    },
-    {
-      "id": "3c10",
-      "name": "mohd fahad",
-      "email": "fahadazmi@gmail.com",
-      "role": "viewer",
-      "status": "Active"
-    },
-    {
-      "id": "5e70",
-      "name": "afack madah",
-      "email": "afack@gmail.com",
-      "role": "editor",
-      "status": "Disabled"
     }
   ],
   "roles": [
@@ -37,16 +23,6 @@
         "Read",
         "Write",
         "Update",
-        "Delete"
-      ],
-      "status": "Active"
-    },
-    {
-      "id": "1ffb",
-      "role": "editor",
-      "permissions": [
-        "Update",
-        "Read",
         "Delete"
       ],
       "status": "Active"
@@ -72,7 +48,7 @@
     {
       "id": "2",
       "permission": "Read",
-      "description": "Grants access to view existing records or data."
+      "description": "Grants access to view existing records or data. Every user has the access of Read."
     },
     {
       "id": "3",

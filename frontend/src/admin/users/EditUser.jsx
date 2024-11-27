@@ -4,7 +4,7 @@ import axios from 'axios';
 import toast from 'react-hot-toast';
 import { useParams } from 'react-router-dom';
 
-function EditUser() {
+function EditUser({page}) {
     const userId = useParams().id;
     // console.log("userId",userId)
     const [input, setInput] = useState({
@@ -100,7 +100,7 @@ function EditUser() {
         }
     }
     return (
-        <Layout>
+        <Layout page={page}>
 
             <div className="container mx-auto p-4 sm:p-6 lg:p-8">
                 <h1 className="text-2xl sm:text-3xl font-extrabold text-center text-gray-800 mb-6 sm:mb-8">

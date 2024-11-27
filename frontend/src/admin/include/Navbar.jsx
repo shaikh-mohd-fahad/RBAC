@@ -64,14 +64,14 @@ function Navbar() {
         {navList}
       </ul> 
     </div>
-    <Link to="/" className="btn btn-ghost text-xl">RBAC</Link>
+    <Link to="/" className="btn btn-ghost text-xl md:ml-10">RBAC</Link>
   </div>
   <div className="navbar-center hidden lg:flex">
     {/* <ul className="menu menu-horizontal px-1">
       {navList}
     </ul> */}
   </div>
-  <div className="navbar-end">
+  <div className="navbar-end md:mr-10">
   <div className="dropdown dropdown-end">
       <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
         <div className="w-10 rounded-full">

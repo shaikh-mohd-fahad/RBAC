@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import Sidebar from "../include/Sidebar";
 import toast, { Toaster } from 'react-hot-toast';
 
-function Layout({ children }) {
+function Layout({ children,page }) {
   return (
     <>
       <Toaster />
@@ -14,7 +14,7 @@ function Layout({ children }) {
       <main>
         <div className="w-full flex flex-col lg:flex-row">
           <div className="w-full lg:w-[250px]">
-            <Sidebar />
+            <Sidebar currentPage={page}/>
           </div>
           <div className="w-full lg:w-[calc(100%-250px)]">
             {children}

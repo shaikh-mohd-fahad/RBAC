@@ -3,7 +3,7 @@ import Layout from '../layout/Layout';
 import axios from 'axios';
 import toast from 'react-hot-toast';
 
-function AddRole() {
+function AddRole({page}) {
   const [input, setInput] = useState({
     role: '',
     permissions: [],
@@ -18,7 +18,7 @@ function AddRole() {
       const res = await axios.get("http://localhost:3000/permission");
       setPermissionsList(res.data);
       // console.log("res", res.data)
-      console.log("permi", permissionsList);
+      // console.log("permi", permissionsList);
       // toast.success("Role Deleted")
     } catch (error) {
       console.log("error", error);
@@ -70,7 +70,7 @@ function AddRole() {
   };
 
   return (
-    <Layout>
+    <Layout page={page}>
       <div className="container mx-auto p-4 sm:p-6">
         <h1 className="text-2xl sm:text-3xl font-extrabold text-center text-gray-800 mb-6 sm:mb-8">
           Add <span className="text-green-600">NEW ROLE</span>
@@ -106,9 +106,14 @@ function AddRole() {
                         id={data.permission}
                         name="permissions"
                         value={data.permission}
-                        checked={input.permissions.includes(data.permission)}
                         onChange={handleInput}
                         className="mr-2"
+                        checked={
+                          data.permission === "Read" 
+                            ? true 
+                            : input.permissions.includes(data.permission)
+                        }
+                        disabled={data.permission === "Read"}
                       />
                       <label htmlFor={data.permission} className="text-sm sm:text-base text-gray-700">
                         {data.permission}

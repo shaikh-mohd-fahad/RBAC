@@ -2,7 +2,7 @@ import React from 'react'
 import {Link} from "react-router-dom"
 function Navbar() {
     const navList=<>
-    <li><Link to="/admin/dashboard">Admin Dashboard</Link></li>
+    <li><Link to="/admin/dashboard" className='font-semibold'>Admin Dashboard</Link></li>
     {/* <li><Link to="admin/test">Test</Link></li> */}
     </>
   return (
@@ -31,19 +31,20 @@ function Navbar() {
         {navList}
       </ul>
     </div>
-    <a className="btn btn-ghost text-xl">RBAC</a>
+    <a className="btn btn-ghost text-xl md:ml-10">RBAC</a>
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal px-1">
       {navList}
     </ul>
   </div>
-  <div className="navbar-end">
+  <div className="navbar-end md:mr-10">
   <div className="dropdown dropdown-end">
       <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
         <div className="w-10 rounded-full">
         <img
             alt="User Profile"
+            className=''
             src="/image/profile3.jpg" />
         </div>
       </div>
