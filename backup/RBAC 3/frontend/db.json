@@ -1,0 +1,80 @@
+{
+  "users": [
+    {
+      "id": "93b1",
+      "name": "abc",
+      "email": "a@gbcmail.com",
+      "role": "viewer",
+      "status": "Disabled"
+    },
+    {
+      "id": "6904",
+      "name": "fahad",
+      "email": "fahadazmilko@gmail.com",
+      "role": "admin",
+      "status": "Active"
+    }
+  ],
+  "roles": [
+    {
+      "id": "b5fb",
+      "role": "admin",
+      "permissions": [
+        "Read",
+        "Write",
+        "Update",
+        "Delete"
+      ],
+      "status": "Active"
+    },
+    {
+      "id": "1ffb",
+      "role": "editor",
+      "permissions": [
+        "Update",
+        "Read",
+        "Delete"
+      ],
+      "status": "Active"
+    },
+    {
+      "role": "viewer",
+      "permissions": [
+        "Read",
+        "Delete",
+        "Update",
+        "Create"
+      ],
+      "status": "Disabled",
+      "id": "053a"
+    }
+  ],
+  "permission": [
+    {
+      "id": "1",
+      "permission": "Create",
+      "description": "Allows the user to create new records or data."
+    },
+    {
+      "id": "2",
+      "permission": "Read",
+      "description": "Grants access to view existing records or data. Every user has the access of Read."
+    },
+    {
+      "id": "3",
+      "permission": "Update",
+      "description": "Enables the user to modify or edit existing records or data."
+    },
+    {
+      "id": "4",
+      "permission": "Delete",
+      "description": "Allows the user to remove or delete existing records or data."
+    }
+  ],
+  "stats": {
+    "totalUsers": 1200,
+    "activeUsers": 950,
+    "adminUsers": 50,
+    "totalRoles": 10
+  }
+}

@@ -59,6 +59,11 @@
       "id": "4",
       "permission": "Delete",
       "description": "Allows the user to remove or delete existing records or data."
+    },
+    {
+      "id": "f604",
+      "permission": "permission a",
+      "description": "fasdf"
     }
   ],
   "stats": {
