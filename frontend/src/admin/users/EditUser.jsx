@@ -17,7 +17,7 @@ function EditUser({page}) {
     const [allRole, setAllRole] = useState([]);
     const getAllRole = async () => {
         try {
-            const res = await axios.get("http://localhost:3000/roles");
+            const res = await axios.get("https://rbac-kappa-one.vercel.app/api/db/roles");
             // console.log("res",res.data)
             setAllRole(res.data)
         } catch (error) {
@@ -34,7 +34,7 @@ function EditUser({page}) {
     //fetching user's data fahad
     const getUserData = async () => {
         try {
-            const res = await axios.get('http://localhost:3000/users/' + userId)
+            const res = await axios.get('https://rbac-kappa-one.vercel.app/api/db/users/' + userId)
             // console.log(res.data)
             setInput(res.data)
         } catch (error) {
@@ -79,7 +79,7 @@ function EditUser({page}) {
         console.log(input);
 
         try {
-            const res = await axios.put('http://localhost:3000/users/' + userId,
+            const res = await axios.put('https://rbac-kappa-one.vercel.app/api/db/users/' + userId,
                 { ...input
                     // name:input.name,
                     // email:input.email,

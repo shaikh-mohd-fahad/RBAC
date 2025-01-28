@@ -10,7 +10,7 @@ function ViewUser({page}) {
 
   const getUserData = async () => {
     try {
-      const res = await axios.get(`http://localhost:3000/users/${userId}`);
+      const res = await axios.get(`https://rbac-kappa-one.vercel.app/api/db/users/${userId}`);
       setUserProfile(res.data);
     } catch (error) {
       console.log('error', error);

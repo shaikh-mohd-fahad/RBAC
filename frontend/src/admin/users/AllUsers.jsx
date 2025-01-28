@@ -11,7 +11,7 @@ function AllUsers({page}) {
 
   const getAllUsers = async () => {
     try {
-      const res = await axios.get("http://localhost:3000/users");
+      const res = await axios.get("https://rbac-kappa-one.vercel.app/api/db/users");
       setUsers(res.data);
     } catch (error) {
       console.log("Error fetching users:", error);
@@ -21,7 +21,7 @@ function AllUsers({page}) {
   const handleDeleteUser = async (id) => {
     // Deleting user by id
     try {
-      const res = await axios.delete(`http://localhost:3000/users/${id}`);
+      const res = await axios.delete(`https://rbac-kappa-one.vercel.app/api/db/users/${id}`);
       getAllUsers(); 
       toast.success("User Deleted");
     } catch (error) {

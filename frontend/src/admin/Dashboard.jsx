@@ -9,8 +9,8 @@ function Dashboard({page}) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const statsRes = await axios.get('http://localhost:3000/stats');
-        const permissionsRes = await axios.get('http://localhost:3000/permission');
+        const statsRes = await axios.get('https://rbac-kappa-one.vercel.app/api/db/stats');
+        const permissionsRes = await axios.get('https://rbac-kappa-one.vercel.app/api/db/permission');
         // console.log(statsRes)
         // console.log(permissionsRes)
         setStats(statsRes.data);

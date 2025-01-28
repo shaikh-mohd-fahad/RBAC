@@ -14,7 +14,7 @@ function AddUsers({page}) {
 
   const getAllRole = async () => {
     try {
-      const res = await axios.get("http://localhost:3000/roles");
+      const res = await axios.get("https://rbac-kappa-one.vercel.app/api/db/roles");
       // console.log("res", res.data)
       setAllRole(res.data);
     } catch (error) {
@@ -54,7 +54,7 @@ function AddUsers({page}) {
 
     try {
       const res = await axios.post(
-        'http://localhost:3000/users',
+        'https://rbac-kappa-one.vercel.app/api/db/users',
         { ...input },
         { headers: { 'Content-Type': 'application/json' } }
       );
